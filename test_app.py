@@ -13,6 +13,10 @@ class TestApp(unittest.TestCase):
         self.assertEqual(subtract(5, 3), 2)
         self.assertEqual(subtract(5, 5), 0)
         self.assertEqual(subtract(10**6, 10**5), 900000)
+     with self.assertRaises(TypeError):
+        add("a", 1)
+    with self.assertRaises(TypeError):
+       subtract(1, "b")
 
 if __name__ == "__main__":
     unittest.main()
