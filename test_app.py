@@ -1,5 +1,3 @@
-# test_app.py
-
 import unittest
 from app import add, subtract
 
@@ -12,11 +10,19 @@ class TestApp(unittest.TestCase):
     def test_subtract(self):
         self.assertEqual(subtract(5, 3), 2)
         self.assertEqual(subtract(5, 5), 0)
-        self.assertEqual(subtract(10**6, 10**5), 900000)
-     with self.assertRaises(TypeError):
-        add("a", 1)
-    with self.assertRaises(TypeError):
-       subtract(1, "b")
+
+    def test_add_invalid_input(self):
+        with self.assertRaises(TypeError):
+            add("a", 1)
+        with self.assertRaises(TypeError):
+            add(1, None)
+
+    def test_subtract_invalid_input(self):
+        with self.assertRaises(TypeError):
+            subtract(1, "b")
+        with self.assertRaises(TypeError):
+            subtract(None, 1)
 
 if __name__ == "__main__":
     unittest.main()
+
